@@ -1,12 +1,11 @@
-
 #include<stdio.h>
 
 
 int main()
 {
 
-    char str[80];
-    int n, i, j, tot = 0, st;
+    char str[100];
+    int n, i, j, tot = 0, ti, s;
     int num[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int flag = 0;
 
@@ -17,17 +16,19 @@ int main()
     i = 0;
 
     while((str[i]=getchar()) != '\n')
-    {   
+    {
         i++;
     }
+        ti = i;
+
             
             printf("Number of output characters: ");
             scanf("%d", &n);
-            st = i;
+        
     
     printf("- Part String: ");
 
-    for(i = (st - n - 1);i <= st;i++)
+    for(i = (ti - n - 1);i <= ti;i++)
     {
         putchar(str[i]);
 
@@ -66,11 +67,15 @@ int main()
     
     printf("\n-  Number string: ");
 
-    for(i = (st - n - 1);i = st;i++)
+    //for(s = (ti - n - 1);s = ti;s++)
+    s = ti - n - 1;
+    while(s < ti)
     {
-        if((str[i] >= '0') && (str[i] <= '9'))
+      s++;
+      //printf("%d\t", s); 
+        if((str[s] >= '0') && (str[s] <= '9'))
         {
-            putchar(str[i]);
+            putchar(str[s]);
             //printf("%c", str[i]);
         }
     }
