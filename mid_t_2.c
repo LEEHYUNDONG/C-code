@@ -6,27 +6,39 @@ void innit_arr(int n, int p[2][n]);
 
 void innit_arr(int n, int p[2][n])
 {
-    int i, j;
+    int i, j, k;
     int seed;
+    int num[20];
 
     seed = time(NULL);
     srand(seed);
 
+    for(k = 0;k < ( n*2);k++)
+    {   
+        fflush(stdout);
+        num[k] = rand() % 7 - 3;
+        //printf("%d\n", num[k]);
+    }
+        
+    
+    k = 0;
     for(i = 0;i < 2;i++)
     {
         for(j = 0;j < n;j++)
         {   
-            fflush(stdout);
-            p[i][j] = (rand() % 7) - 3;
+            p[i][j] = num[k];
+            //printf("%d\t", p[i][j]);
+            k++;
         }
-        
     }
 
 }
+
+
 int main()
 {
+    
     int arr[2][10];
-    //int *pi = arr;
     int i, j, k, t;
     int tmp1, tmp2, tmp3;
     int n, flag = 0;
@@ -35,8 +47,8 @@ int main()
 
     printf("number of second space metrix : "); scanf("%d", &n);
 
-    innit_arr(n, arr);
-    
+
+
     printf("[arrangement]\n");
     for(i = 0;i < 2;i++)
     { 
