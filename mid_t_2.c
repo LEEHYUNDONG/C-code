@@ -48,7 +48,8 @@ int main()
     printf("number of second space metrix : "); scanf("%d", &n);
 
 
-
+    innit_arr(n, arr);
+    
     printf("[arrangement]\n");
     for(i = 0;i < 2;i++)
     { 
