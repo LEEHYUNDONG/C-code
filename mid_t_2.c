@@ -17,7 +17,6 @@ void innit_arr(int n, int p[2][n])
     {   
         fflush(stdout);
         num[k] = rand() % 7 - 3;
-        //printf("%d\n", num[k]);
     }
         
     
@@ -27,30 +26,40 @@ void innit_arr(int n, int p[2][n])
         for(j = 0;j < n;j++)
         {   
             p[i][j] = num[k];
-            //printf("%d\t", p[i][j]);
             k++;
         }
     }
 
-}
+        for(i = 0;i < 2;i++)
+        {
+            for(j = 0;j < n;j++)
+            {   
+                printf("%d\t",  p[i][j]);
+            
+            }
+        }
 
+        printf("\n\n\n");
+
+}
 
 int main()
 {
     
-    int arr[2][10];
-    int i, j, k, t;
-    int tmp1, tmp2, tmp3;
-    int n, flag = 0;
-    int num[20];
+    int arr[2][10]; // fill with random nums
+    int i = 0, j = 0, k, t;//just for FOR sentences
+    int tmp1, tmp2, tmp3; //3 spaces
+    int n, flag = 0; // that counts how many times it picked the nums
+    int num[20];//number that used for arrangements
 
 
     printf("number of second space metrix : "); scanf("%d", &n);
 
 
     innit_arr(n, arr);
-    
-    printf("[arrangement]\n");
+
+
+    printf("[arrangement]\n"); // to show filled ramdom numbers between -3 ~ 3 in the room arr
     for(i = 0;i < 2;i++)
     { 
         for(j = 0;j < n;j++)
@@ -60,7 +69,7 @@ int main()
         printf("\n");
     }
 
-    for(i = 0;i < 2;i++)
+    for(i = 0;i < 2;i++)     //array numbers on decr incr each first line that incr second line decr
     {
         for(k = 0;k < n;k++)
         {
@@ -101,7 +110,7 @@ int main()
     printf("[number that used for array]\n"); 
 
 
-
+                                //to fill the num arr with random nums that used for arrangements.
     for(i = 0;i < 2;i++)
     { 
         for(j = 0;j < n;j++)
@@ -111,7 +120,7 @@ int main()
         }
     }
 
-    for(t = 0;t < 2*n;t++)
+    for(t = 0;t < (2*n);t++)
     {
         for(k = 0;k < 2*n;k++)
         {
@@ -139,18 +148,3 @@ int main()
     return(0);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
