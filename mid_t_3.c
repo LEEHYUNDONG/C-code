@@ -15,8 +15,9 @@ void arr_rand(int m[], int n)
 
     for(i = 0;i < n;i++)
     {
-        m[i] = rand() % 10 + 10;
+        m[i] = (rand() % 10) + 10;
     }
+
 }
 
 void arr_sort(int m[], int n)
@@ -45,7 +46,7 @@ void arr_sort(int m[], int n)
 int main()
 {
     int arr[10];
-    int num, i, j = 0;
+    int num, i, j = 0, flag = 0;
     int sum = 0;
     int over_twice[10];
 
@@ -53,7 +54,7 @@ int main()
 
     //num = getch();
     
-    while(num = _getch())
+    while((num = getchar()) != '\n')
     {
     
         printf("how many numbers (1 ~ 9) : ");
@@ -62,7 +63,7 @@ int main()
         arr_sort(arr, num);
         
         
-        for(i = 0;i < num;i++)
+        for(i = 0;i < num - '0';i++)
         {
             printf("%d\t", arr[i]);
             
@@ -74,22 +75,23 @@ int main()
             if(arr[i] == arr[i+1])
             {   
                 j++;
+                flag++;
                 over_twice[j] = arr[i];
                 if(over_twice[j] == over_twice[j+1])
                 {
                     j--;
+                    flag--;
                 }
             }
         }
+        
         printf("(sum of even nums %d) ==>", sum);
-        for(i = 0;i < j;i++)
+        for(i = 0;i < flag;i++)
         {
             printf("%d\t", over_twice[i]);
         
         }
         printf("\n");
-    
-    }
         
         
         if((num < '1') && (num > '9'))
@@ -97,11 +99,7 @@ int main()
             printf("break\n"); 
             break;
         }
-
-
-
-    
-
+    }
 
     return(0);
 
