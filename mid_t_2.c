@@ -69,6 +69,8 @@ int main()
         printf("\n");
     }
 
+    
+    
     for(i = 0;i < 2;i++)     //array numbers on decr incr each first line that incr second line decr
     {
         for(k = 0;k < n;k++)
@@ -84,6 +86,7 @@ int main()
                         arr[i][j+1] = tmp1;
                     }
                 }
+                
                 if(i == 1)
                 {
                     if(arr[i][j] < arr[i][j+1])
@@ -96,6 +99,8 @@ int main()
             }
         }
     }
+
+
     
     printf("[re - arrangement]\n");
     for(i = 0;i < 2;i++)
@@ -120,6 +125,7 @@ int main()
         }
     }
 
+    
     for(t = 0;t < (2*n);t++)
     {
         for(k = 0;k < 2*n;k++)

@@ -15,7 +15,6 @@ void reverse_string(int n, int *ch)
         printf("%d\t%d\n", i, j);
     }
     
-//    printf("%s\n\n", str);
 
     for(i = 0;i <= n;i++)
     {
@@ -41,9 +40,6 @@ int main()
 
     }
 
-    //printf("input string : %s", str);
-
-    //for(i = 0;i < tmp;i++)
 
 
     reverse_string(tmp, str);
