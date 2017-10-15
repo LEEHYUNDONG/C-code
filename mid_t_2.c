@@ -2,11 +2,11 @@
 #include<stdlib.h>
 #include<time.h>
 
-void innit_arr(int n, int p[2][n]);
+void innit_arr(int n, int *p);
 
-void innit_arr(int n, int p[2][n])
+void innit_arr(int n, int *p)
 {
-    int i, j, k;
+    int i,  k;
     int seed;
     int num[20];
 
@@ -21,22 +21,16 @@ void innit_arr(int n, int p[2][n])
         
     
     k = 0;
-    for(i = 0;i < 2;i++)
+    for(i = 0;i < (2*n);i++)
     {
-        for(j = 0;j < n;j++)
-        {   
-            p[i][j] = num[k];
+            p[i] = num[k];
             k++;
-        }
     }
 
-        for(i = 0;i < 2;i++)
+        for(i = 0;i < (n*2);i++)
         {
-            for(j = 0;j < n;j++)
-            {   
-                printf("%d\t",  p[i][j]);
+                printf("%d\t",  p[i]);
             
-            }
         }
 
         printf("\n\n\n");
@@ -56,7 +50,17 @@ int main()
     printf("number of second space metrix : "); scanf("%d", &n);
 
 
-    innit_arr(n, arr);
+    innit_arr(n, num);
+
+    k = 0;
+
+    for(i = 0;i < 2;i++)
+    {
+        for(j = 0;j < n;j++)
+        {
+            arr[i][j] = num[k++];
+        }
+    }
 
 
     printf("[arrangement]\n"); // to show filled ramdom numbers between -3 ~ 3 in the room arr
@@ -71,34 +75,40 @@ int main()
 
     
     
-    for(i = 0;i < 2;i++)     //array numbers on decr incr each first line that incr second line decr
-    {
+   // for(i = 0;i < 2;i++)     //array numbers on decr incr each first line that incr second line decr
+   // {
         for(k = 0;k < n;k++)
         {
             for(j = 0;j < n;j++)
             {
-                if(i == 0)
-                {
-                    if(arr[i][j] > arr[i][j+1])
+              //  if(i == 0)
+               // {
+                    if(arr[0][j] > arr[0][j+1])
                     {
-                        tmp1 = arr[i][j];
-                        arr[i][j] = arr[i][j+1];
-                        arr[i][j+1] = tmp1;
+                        tmp1 = arr[0][j];
+                        arr[0][j] = arr[0][j+1];
+                        arr[0][j+1] = tmp1;
                     }
-                }
+            }
+        }
                 
-                if(i == 1)
-                {
-                    if(arr[i][j] < arr[i][j+1])
+                //if(i == 1)
+                //{
+        for(k = 0;k < n;k++)
+        {
+            for(j = 0;j < n;j++)
+            {
+                    
+                    if(arr[1][j] < arr[1][j+1])
                     {
-                        tmp2 = arr[i][j];
+                        tmp2 = arr[1][j];
                         arr[i][j] = arr[i][j+1];
                         arr[i][j+1] = tmp2;
                     }
                 }
-            }
         }
-    }
+     //   }
+   // }
 
 
     
@@ -116,14 +126,14 @@ int main()
 
 
                                 //to fill the num arr with random nums that used for arrangements.
-    for(i = 0;i < 2;i++)
+    /*for(i = 0;i < 2;i++)
     { 
         for(j = 0;j < n;j++)
         {
             t++;
             num[t] = arr[i][j]; 
         }
-    }
+    }*/
 
     
     for(t = 0;t < (2*n);t++)
