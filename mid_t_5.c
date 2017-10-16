@@ -8,7 +8,7 @@ int cntword(char *str)
     while(1)
     {
         i++;
-        if(str[i] =='\n')
+        if(str[i] =='\t')
         {
             flag = i;
             break;
@@ -35,10 +35,7 @@ int main()
     int flag = 0;
     int flagg = 0;
 
-    while(1)
-    {
-        //fflush(stdin);
-        while((str[i] = getchar()) != '\n')
+        while((str[i] = getchar()) != '\t')
         {
             i++;
             flag = i;
@@ -49,7 +46,7 @@ int main()
         {
             printf("%c", str[i]);
         }*/
-        //printf("\n");
+        printf("\n");
         w = cntword(str);
         
         for(i = 0;i < flag;i++)
@@ -65,14 +62,14 @@ int main()
             if(str[i] == '\n') flagg = 1;
 
         }
-        i = 0;
-        if(str[0] == '\n') flagg = 0;
+     //   i = 0;
+     //   if(str[0] == '\n') flagg = 0;
         //printf("%d\t%c", flag, str[flag]);
         
-        if(flagg == 0) break;    
+        //if(flagg == 0) break;    
     
     
-    }
+   // }
             
     printf("frequency of !?. : %d\n", m);
     printf("sum of number : %d\n", sum);
