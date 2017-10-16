@@ -16,6 +16,7 @@ void arr_rand(int *m, int n)
     for(i = 0;i < n;i++)
     {
         m[i] = (rand() % 10) + 10;
+        //printf("%5d\t", m[i]);
     }
 
 }
@@ -27,7 +28,7 @@ void arr_sort(int *m, int n)
 
     for(i = 0;i < n;i++)
     {
-        for(j = 0;j < n;j++)
+        for(j = 0;j < (n-1);j++)
         {
             if(m[j] > m[j+1])
             {
@@ -80,34 +81,50 @@ while(1)//(num > '0') && (num <= '9'))
             
             }
 
-            if(arr[i] != arr[i+1])
+            if(arr[i] == arr[i+1])
             {   
-                j++;
+                
                 flag++;
                 over_twice[j] = arr[i];
-
-
+                j++;
+                    
             }
+
         }
         
         printf("(sum of even nums %d) ==>", sum);
-        sum = 0;
+        sum = 0; j = 0;
         
         for(i = 0;i < flag;i++)
         {
-            printf("%d\t", over_twice[i]);
+            if(over_twice[i] != over_twice[i+1])
+            {
+                printf("%d\t", over_twice[i]);
+            }
         
         }
+        
+    
+        for(i = 0;i < flag;i++)
+        {
+            over_twice[i] = 0;
+        
+        }
+
+        flag = 0;
+
+        if((num < '1') && (num > '9')) break;
+    
     }
         
         printf("\n");
         
         
-        /*if((num < '1') && (num > '9'))
+        if((num < '1') && (num > '9'))
         {
             printf("break\n"); 
             break;
-        }*/
+        }
 }
 
     return(0);
