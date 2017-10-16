@@ -27,13 +27,13 @@ void innit_arr(int n, int *p)
             k++;
     }
 
-        for(i = 0;i < (n*2);i++)
+      /*  for(i = 0;i < (n*2);i++)
         {
                 printf("%d\t",  p[i]);
             
-        }
+        }*/
 
-        printf("\n\n\n");
+        printf("\n\n");
 
 }
 
@@ -75,14 +75,12 @@ int main()
 
     
     
-   // for(i = 0;i < 2;i++)     //array numbers on decr incr each first line that incr second line decr
-   // {
+        //array numbers on decr incr each first line that incr second line decr
+        
         for(k = 0;k < n;k++)
         {
-            for(j = 0;j < n;j++)
+            for(j = 0;j < (n-1);j++)
             {
-              //  if(i == 0)
-               // {
                     if(arr[0][j] > arr[0][j+1])
                     {
                         tmp1 = arr[0][j];
@@ -92,23 +90,22 @@ int main()
             }
         }
                 
-                //if(i == 1)
-                //{
+        
+        
+        
         for(k = 0;k < n;k++)
         {
-            for(j = 0;j < n;j++)
+            for(j = 0;j < (n-1);j++)
             {
                     
                     if(arr[1][j] < arr[1][j+1])
                     {
                         tmp2 = arr[1][j];
-                        arr[i][j] = arr[i][j+1];
-                        arr[i][j+1] = tmp2;
+                        arr[1][j] = arr[1][j+1];
+                        arr[1][j+1] = tmp2;
                     }
                 }
         }
-     //   }
-   // }
 
 
     
@@ -138,7 +135,7 @@ int main()
     
     for(t = 0;t < (2*n);t++)
     {
-        for(k = 0;k < 2*n;k++)
+        for(k = 0;k < (2*n);k++)
         {
             if(num[k] > num[k+1])
             {
@@ -148,16 +145,22 @@ int main()
             }
         }
     }
-    for(t = 0;t < 2*n;t++)
-    {
-        if(num[t] != num[t+1])
+        
+        
+        for(k = 0;k < (2*n);k++)
         {
-            flag++;
-            printf("%d   ", num[t]);
-        }
-        if((flag % 4) == 0) printf("\n");
+               // printf("%5d", num[k]);   
+            if(num[k] != num[k+1])
+            {
+                flag++;
+                printf("%4d", num[k]);
+            }
+        
+        
+            if((flag % 4) == 0) printf("\n");
 
-    }
+        }
+
 
     printf("\n\n");
 

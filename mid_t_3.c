@@ -2,10 +2,10 @@
 #include<stdlib.h>
 #include<time.h>
 
-void arr_rand(int m[], int n);
-void arr_sort(int m[], int n);
+void arr_rand(int *m, int n);
+void arr_sort(int *m, int n);
 
-void arr_rand(int m[], int n)
+void arr_rand(int *m, int n)
 {
     int i;
     int seed;
@@ -20,7 +20,7 @@ void arr_rand(int m[], int n)
 
 }
 
-void arr_sort(int m[], int n)
+void arr_sort(int *m, int n)
 {
     int i, j;
     int tmp;
@@ -46,21 +46,28 @@ void arr_sort(int m[], int n)
 int main()
 {
     int arr[10];
-    int num, i, j = 0, flag = 0;
+    int num, i, j = 0, flag = 0, numi;
     int sum = 0;
     int over_twice[10];
 
-    printf("how many numbers (1 ~ 9) : ");
 
-    //num = getch();
+    
+    fflush(stdin);
+while(1)//(num > '0') && (num <= '9'))
+{
+    fflush(stdin);
+
+    printf("how many numbers (1 ~ 9) : ");
     
     while((num = getchar()) != '\n')
-    {
-    
-        printf("how many numbers (1 ~ 9) : ");
-    
-        arr_rand(arr, num);
-        arr_sort(arr, num);
+    {   
+        /*numi = num - '0';
+        printf("%5d\t%5d", num, numi);*/
+
+        numi = num - '0';
+        
+        arr_rand(arr, numi);
+        arr_sort(arr, numi);
         
         
         for(i = 0;i < num - '0';i++)
@@ -69,37 +76,39 @@ int main()
             
             if((arr[i] % 2) == 0)
             {
-                sum += arr[i];
+                sum = arr[i] + sum;
             
             }
-            if(arr[i] == arr[i+1])
+
+            if(arr[i] != arr[i+1])
             {   
                 j++;
                 flag++;
                 over_twice[j] = arr[i];
-                if(over_twice[j] == over_twice[j+1])
-                {
-                    j--;
-                    flag--;
-                }
+
+
             }
         }
         
         printf("(sum of even nums %d) ==>", sum);
+        sum = 0;
+        
         for(i = 0;i < flag;i++)
         {
             printf("%d\t", over_twice[i]);
         
         }
+    }
+        
         printf("\n");
         
         
-        if((num < '1') && (num > '9'))
+        /*if((num < '1') && (num > '9'))
         {
             printf("break\n"); 
             break;
-        }
-    }
+        }*/
+}
 
     return(0);
 
