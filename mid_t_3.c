@@ -93,7 +93,7 @@ while(1)//(num > '0') && (num <= '9'))
         }
         
         printf("(sum of even nums %d) ==>", sum);
-        sum = 0; j = 0;
+        sum = 0; j = 0; //sum and j facts should be clean for preparing next for next reputation.
         
         for(i = 0;i < flag;i++)
         {
@@ -105,13 +105,13 @@ while(1)//(num > '0') && (num <= '9'))
         }
         
     
-        for(i = 0;i < flag;i++)
+        for(i = 0;i < flag;i++) //printed over twice nums and then clean the array
         {
             over_twice[i] = 0;
         
         }
 
-        flag = 0;
+        flag = 0; //flag must be cleaned too
 
         if((num < '1') && (num > '9')) break;
     
