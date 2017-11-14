@@ -6,9 +6,9 @@ void (*menu_1)(void)
     int num;
     
     
-    printf("--------------------------\n");
+    printf("-------------------------------\n");
     printf(" 1. Sign Up\n 2. Sign In\n 3. List Of User\n \n");
-    printf("--------------------------\n");
+    printf("-------------------------------\n");
     
     printf("PRESS KEY : "); scanf("%d", &num);
 
@@ -25,7 +25,7 @@ void (*menu_1)(void)
             break;
 
         case 3 :
-            list_user();
+            list_of_user();
             break;
 
     }
