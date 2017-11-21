@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
 #include<string.h>
 
 //to view notes of that person
@@ -21,5 +20,7 @@ int memo_title(struct person *pp, int n_note, int n_person)
             }
         }
     }
-                    
+    
+    return i;
 
+}
