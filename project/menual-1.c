@@ -6,8 +6,8 @@ void (*menu_1)(void)
     int num;
     
     
-    printf("-------------------------------\n");
-    printf(" 1. Sign Up\n 2. Sign In\n 3. List Of User\n \n");
+    printf("-------------------------------\n\n");
+    printf(" 1. Sign Up\n 2. Sign In\n 3. List Of User\n\n");
     printf("-------------------------------\n");
     
     printf("PRESS KEY : "); scanf("%d", &num);
