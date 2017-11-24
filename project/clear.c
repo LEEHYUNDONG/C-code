@@ -1,10 +1,9 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-int main()
+void clear()
 {
 
-    printf("1111111111111111");
+    system("clear");
 
-    system(cls);
-    return(0);
 }

@@ -4,36 +4,62 @@
 
 int main()
 {
-    FILE *fp;
-    char str[80][300];
-    char tmp[300];
-    int i = 0;
+    FILE *ifp, *ofp;
+    char str[300];
+    //int flag = 0;
+    char *res;
 
-    fp = fopen("a.txt", "w");
-    if(fp == NULL)
+
+    ifp = fopen("a.txt", "r");
+    
+    if(ifp == NULL)
     {
         printf("couldn't make new file.\n");
         return (1);
+    }
+
+    ofp = fopen("a.txt", "w");
+    
+    if(ofp == NULL)
+    {
+        printf("couldn't open print file.\n");
+        return 1;
     }
 
     printf("input string : ");
     
     while(1)
     {
-        fgets(tmp, 300, stdin);
-        fflush(stdin);
-        tmp[strlen(tmp)] = '\0';
-
-        if(strcmp(tmp, "\n\n") == 0)
+        res = fgets(str, sizeof(str), ifp);
+        
+        if(res == NULL)
         {
-            i++;
-            strcpy(str[i], tmp);
             break;
         }
-    }
-    fprintf(fp, "%s\n", str[i]);
+        /*if(str == '\n');
+        {
+            flag++;
+        
+        }
+        if(flag == 1)
+        {
+            if == '\n')
+            {
+                break;
+            }
+            else
+            {
+                flag = 0;
+            }
+        }*/
 
-    fclose(fp);
+        str[strlen(str)] = '\0';
+        fputs(str, ofp);
+    
+    }
+
+    fclose(ifp);
+    fclose(ofp);
 
     return(0);
 }

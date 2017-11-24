@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<conio.h>
+#include
 
 int sign_in(struct person *pp, int n_person);
 
@@ -34,6 +35,7 @@ int sign_in(struct person *pp, int n_person);
     
     while(1)
     {
+
         if(strcmp(pp[i].psw, psw, strlen(psw)) == 0)
         {
             return i;
