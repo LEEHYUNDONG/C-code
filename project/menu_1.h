@@ -11,12 +11,14 @@ int tnum[10] = {0};
 
 int menu_1(void)
 {
+    int num;
+    int pn;
+
     printf("----------------------\n\n");
     printf(" 1. Sign Up\n 2. Sign In\n 3. List Of User\n\n");
     printf("----------------------\n\n");
 
     printf("SELECT : "); scanf("%d", &num);
-
 
     switch(num)
     {
@@ -26,7 +28,7 @@ int menu_1(void)
             break;
         
         case 2 : 
-            sign_in();
+            pn = sign_in();
 
             break;
 
@@ -39,7 +41,52 @@ int menu_1(void)
 
 }
 
-void list_of_user(struct info *arr, int *pnum)
+void Loaddata1(info *arr, int *pnum)
+{
+    FILE *file = fopen("a.txt", "rb");
+    if(file == NULL)
+    {
+        return ;
+    }
+    while(1)
+    {
+        fread(arr[*pnum].name, sizeof(arr[*pnum].name), 1, file);
+        fread(arr[*pnum].id, sizeof(arr[*pnum].id), 1, file);
+        fread(arr[*pnum].psw, sizeof(arr[*pnum].psw), 1, file);
+        fread(arr[*pnum].sch, sizeof(arr[*pnum].sch), 1, file);
+        fread(arr[*pnum].city, sizeof(arr[*pnum].city), 1, file);
+        fread(arr[*pnum].age, sizeof(arr[*pnum].age), 1, file);
+        if(feof(file) != 0)
+        {
+            break;
+        }
+            
+            (*pnum)++;
+
+    }
+}
+
+void Savedata1(info *arr, int *pnum)
+{
+    int i;
+    FILE *file = fopen("a.txt", "wb");
+    if(file == NULL)
+    {
+        return ;
+    }
+    for(i = 0;i < (*pnum);i++)
+    {
+        fwrite(arr[i].name, sizeof(arr[i].name), 1, file);
+        fwrite(arr[i].id, sizeof(arr[i].id), 1, file);
+        fwrite(arr[i].psw, sizeof(arr[i].psw), 1, file);
+        fwrite(arr[i].sch, sizeof(arr[i].sch), 1, file);
+        fwrite(arr[i].city, sizeof(arr[i].city), 1, file);
+        fwrite(arr[i].age, sizeof(arr[i].age), 1, file);
+
+    }
+}
+
+void list_of_user(info *arr, int *pnum)
 {
     int i;
 
@@ -54,28 +101,28 @@ void list_of_user(struct info *arr, int *pnum)
     }
 
 }
-
-void sign_up(struct info *arr, int *pnum)
+//////////////////////////////////////////////////////////
+void sign_up(info *arr, int *pnum)
 {
     if((*pnum) < MAX_P)
     {
         printf("Name : ");
-        fgets(arr[*pnum].name, sizeof(arr[*pnum].name, stdin);
+        fgets(arr[*pnum].name, sizeof(arr[*pnum].name), stdin);
     
         printf("ID : ");
-        fgets(arr[*pnum].id, sizeof(arr[*pnum].id, stdin);
+        fgets(arr[*pnum].id, sizeof(arr[*pnum].id), stdin);
         
         printf("Password : ");
-        fgets(arr[*pnum].psw, sizeof(arr[*pnum].psw, stdin);
+        fgets(arr[*pnum].psw, sizeof(arr[*pnum].psw), stdin);
         
         printf("School : ");
-        fgets(arr[*pnum].sch, sizeof(arr[*pnum].sch, stdin);
+        fgets(arr[*pnum].sch, sizeof(arr[*pnum].sch), stdin);
         
         printf("City : ");
-        fgets(arr[*pnum].city, sizeof(arr[*pnum].city, stdin);
+        fgets(arr[*pnum].city, sizeof(arr[*pnum].city), stdin);
         
         printf("Age : ");
-        fgets(arr[*pnum].age, sizeof(arr[*pnum].age, stdin);
+        fgets(arr[*pnum].age, sizeof(arr[*pnum].age), stdin);
 
         (*pnum)++;
     }
@@ -109,7 +156,7 @@ int getch()
 
 }
 
-void sign_in(struct info *arr, int *pnum)
+int sign_in(info *arr, int *pnum)
 {
 
     int i, j;
@@ -122,7 +169,7 @@ void sign_in(struct info *arr, int *pnum)
 
     for(i = 0;i < *pnum;i++)
     {
-        if(strcmp(arr[i].id, id, strlen(id)) == 0)
+        if(strncmp(arr[i].id, id, strlen(id)) == 0)
         {
             break;
         }
@@ -136,11 +183,11 @@ void sign_in(struct info *arr, int *pnum)
         printf("PASSWORD : ");
         for(j = 0;j < *pnum;j++)
         {
-            pws[pn] = getch();
+            psw[pn] = getch();
             putchar('*');
         }
 
-        if(strcmp(arr[pn].psw, pse, strlen(psw)) == 0)
+        if(strncmp(arr[pn].psw, psw, strlen(psw)) == 0)
         {
             return pn;
             printf("----------------------\n");
