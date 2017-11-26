@@ -4,12 +4,16 @@
 #include"info.h"
 #include"Func1.h"
 #include"ArrFunc.h"
+#include"Func2.h"
+#include"ArrFunc2.h"
+
 
 
 int main()
 {
     Loaddata1(arr, &pnum);
     char menu;
+    char menu2;
 
     while(menu != 'Q')
     {
@@ -41,7 +45,39 @@ int main()
 
     }
 
+    while(menu2 != 'Q')
+    {
+        printf("-----------------\n");
+        printf("\n 1. To Wrtite Note\n 2. To Edit Note\n 3. To View\n
+        4. Back to Menu\n\n");
+        printf("-----------------\n");
+
+        printf("SELECT : ");
+        scanf("%d", &menu2);
+
+        switch(menu2)
+        {
+            case '1' : 
+                Towritenote();
+                break;
+
+            case '2' : 
+                Toedit();
+                break;
+            
+            case '3' : 
+                Toview();
+                break;
     
+            case '4' : 
+                menu = 'Q';
+                break;
+
+            default :
+                printf("You pressed Wrong Number\n");
+                break;
+        }
+    }
 
 
     return(0);
