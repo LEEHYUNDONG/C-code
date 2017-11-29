@@ -20,4 +20,5 @@ info arr[10];
 int npnum = 0; // For New User Number
 int pnum = 0; // Now User Number
 int osnum = 0; // Occupied User
-int tnum[10] = {0,}; // Memo Number fo Each User 
+int tnum[10] = {0,}; // Memo Number fo Each User
+int mnum = 0; // Number of memo that user used

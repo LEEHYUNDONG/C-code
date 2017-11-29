@@ -5,6 +5,45 @@
 #define MAX_P 10
 #define MAX_N 80
 
+void Loadtext1(info *arr, int *mnum)
+{
+    FILE *file = fopen("memo.txt", "rb");
+
+    if(file == NULL)
+    {
+        return;
+    }
+
+    while(1)
+    {
+        fread((arr + *mnum) -> memo, sizeof(arr[*mnum].memo), 1, file);     
+        if(feof(file) != 0)
+        {
+            break;
+        }
+        (*mnum)++;
+
+    }
+
+}
+
+void Savetext1(info *arr, int *mnum)
+{
+    int i;
+    FILE *file = fopen("memo.txt", "wb");
+
+    if(file == NULL)
+    {
+        return;
+    }
+
+    for(i = 0;i < (*mnum) + 1; i++)
+    {
+        fwrite((arr + i) -> memo, sizeof(arr[i].memo), 1, file);
+    }
+
+}
+
 void savetime(info *arr, int *npnum)
 {
 
@@ -37,7 +76,7 @@ void signintime()
     
 
     printf("Log in Time : %4d.%d.%d %d:%d:%d\n", t.tm_year+1900, 
-    t.tm_mon+1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);*/
+    t.tm_mon+1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
 
 }
 int getch()
@@ -63,4 +102,11 @@ int getch()
 
 void to_write_note
 {
+    
+    char temp[200];
+    char ch;
+    int i = 0;
+    int flag = 0;
 
+    printf("//////////////////////////////////\n ");
+    

@@ -40,6 +40,7 @@ void Savedata1(info *arr,int *pnum) {
 }
 
 int getch() {
+    
     int ch;
     struct termios buf;
     struct termios save;
