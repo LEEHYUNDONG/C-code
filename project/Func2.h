@@ -2,10 +2,9 @@
 #include<string.h>
 #include<termios.h>
 #include<time.h>
-#define MAX_P 10
-#define MAX_N 80
 
-void Loadtext1(info *arr, int *mnum)
+
+void Loadtext1(info *arr, int *tnum, int *osnum)
 {
     FILE *file = fopen("memo.txt", "rb");
 
@@ -16,12 +15,12 @@ void Loadtext1(info *arr, int *mnum)
 
     while(1)
     {
-        fread((arr + *mnum) -> memo, sizeof(arr[*mnum].memo), 1, file);     
+        fread((arr + *tnum[*osnum]) -> memo, sizeof(arr[tnum[*osnum]].memo), 1, file);     
         if(feof(file) != 0)
         {
             break;
         }
-        (*mnum)++;
+        (*tnum[*osnum])++;
 
     }
 
@@ -29,6 +28,7 @@ void Loadtext1(info *arr, int *mnum)
 
 void Savetext1(info *arr, int *mnum)
 {
+
     int i;
     FILE *file = fopen("memo.txt", "wb");
 
@@ -37,14 +37,14 @@ void Savetext1(info *arr, int *mnum)
         return;
     }
 
-    for(i = 0;i < (*mnum) + 1; i++)
+    for(i = 0;i < (tnum[*osnum]) + 1; i++)
     {
         fwrite((arr + i) -> memo, sizeof(arr[i].memo), 1, file);
     }
 
 }
 
-void savetime(info *arr, int *npnum)
+void savetime(info *arr, int *osnum, int *tnum)
 {
 
     time_t now;
@@ -54,17 +54,17 @@ void savetime(info *arr, int *npnum)
     time(&now);
     t = *localtime(&now);
     
-    arr[*npnum].time[0] = t.tm_year+1900;
-    arr[*npnum].time[1] = t.tm_mon+1;
-    arr[*npnum].time[2] = t.tm_mday;
-    arr[*npnum].time[3] = t.tm_hour;
-    arr[*npnum].time[4] = t.tm_min;
-    arr[*npnum].time[5] = t.tm_sec;
+    arr[*osnum].time[*tnum[*osnum]][0] = t.tm_year+1900;
+    arr[*osnum].time[tnum[*osnum]][1] = t.tm_mon+1;
+    arr[*osnum].time[tnum[*osnum]][2] = t.tm_mday;
+    arr[*osnum].time[tnum[*osnum]][3] = t.tm_hour;
+    arr[*osnum].time[tnum[*osnum]][4] = t.tm_min;
+    arr[*osnum].time[tnum[*osnum]][5] = t.tm_sec;
     
 
 }
 
-void signintime()
+void presenttime()
 {
 
     time_t now;
@@ -75,10 +75,11 @@ void signintime()
     t = *localtime(&now);
     
 
-    printf("Log in Time : %4d.%d.%d %d:%d:%d\n", t.tm_year+1900, 
+    printf("Present Time : %4d.%d.%d %d:%d:%d\n", t.tm_year+1900, 
     t.tm_mon+1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
 
 }
+
 int getch()
 {
     int ch;
@@ -100,13 +101,81 @@ int getch()
 
 }
 
-void to_write_note
+void to_write_note(info *arr, int *tnum, int *osnum, int *pnum)
 {
     
-    char temp[200];
+    char tmp[200];
     char ch;
     int i = 0;
+    int j;
     int flag = 0;
 
+        
     printf("//////////////////////////////////\n ");
     
+    while(1)
+    {
+
+        if(flag != 2)
+        {
+            ch = getchar();
+            if((ch = getchar()) == '\n')
+            {
+                flag++;
+                if((ch = getchar()) == '\n')
+                {
+                    flag++;
+                }
+            
+            else
+                flag = 0;
+            }
+            strncpy(tmp[i], ch, 1);
+            i++;
+        
+        }
+        else if(flag == 2)
+        {
+            break;
+        }
+    }
+    tmp[i - 1] = '\0';
+    strncpy(arr[tnum[*osnum]].memo[*osnum], tmp, strlen(tmp) - 1);
+    
+    flag = 0;
+    
+    for(j = 0;j < 19;j++)
+    {
+        if(tmp[j] == ' ')
+        {
+            flag++;
+            if(flag == 2)
+            {
+                strncpy(arr[tnum[*osnum]].title[*osnum], tmp, j);
+            }
+        }
+    }
+    
+    
+}
+
+void To_view_note(info *arr, int *tnum, int *osnum, int *pnum)
+{   
+
+    int i, j;
+
+    for(i = 0;i < *pnum;i++)
+    {
+        printf("------------------------------------\n");
+        for(j = 0;j < tnum[*osnum];j++)
+        {
+            printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+            printf("%4d.%d.%d  %d:%d:%d\n", arr[i].stime[j][0], arr[i].stime[j][1], arr[i].stime[j][2], arr[i].stime[j][3], arr[i].stime[j][4], arr[i].stime[j][5]);
+            printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+            printf("%s", arr[i].memo[j]);
+        }
+        printf("------------------------------------\n");
+    }
+
+}
+        

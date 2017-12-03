@@ -48,8 +48,7 @@ int main()
     while(menu2 != 'Q')
     {
         printf("-----------------\n");
-        printf("\n 1. To Wrtite Note\n 2. To Edit Note\n 3. To View\n
-        4. Back to Menu\n\n");
+        printf("\n 1. To Wrtite Note\n 2. To View Note\n 3. Back to menu\n\n");
         printf("-----------------\n");
 
         printf("SELECT : ");
@@ -62,14 +61,10 @@ int main()
                 break;
 
             case '2' : 
-                Toedit();
+                Toview();
                 break;
             
             case '3' : 
-                Toview();
-                break;
-    
-            case '4' : 
                 menu = 'Q';
                 break;
 

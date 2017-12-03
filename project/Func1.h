@@ -140,47 +140,6 @@ void Sign_in(info *arr, int *pnum,int *osnum) {
     }
 }
 
-void To_write_note(info *arr, int *tnum, int *n_num) {
-    char temp[200];
-    char ch;
-    int i = 0;
-    int l = 0;
-    int flag = 0;
-
-    printf("Write : ");
-    if((*n_num) < MAX_N) {
-        ch = getchar();
-        while(flag != 2) {
-            if (ch == '\n') flag++;
-            else flag = 0;
-            temp[i] = ch;
-            i++;
-            ch = getchar();
-        }
-        temp[i-1] = '\0';
-        strncpy(arr[*tnum].memo[*n_num],temp,(strlen(temp)-1));
-        for(l=0; l<19; l++) {
-            if(temp[l] == 10) {
-                strncpy(arr[*tnum].title[*n_num],temp,l);
-                break;
-            }
-            else if(temp[l] == 32) {
-                strncpy(arr[*tnum].title[*n_num],temp,l); 
-                break;
-            }
-            else if(l == 18) {
-                strncpy(arr[*tnum].title[*n_num],temp,l);
-                break;
-            }
-        }
-        (*n_num)++;
-    }
-            
-    else {
-        printf("Memo is Full\n"); 
-    }
-}
-
 void List_of_user(info *arr, int *pnum) {
     int i;
     for(i=0;i<(*pnum)+1;i++) {
