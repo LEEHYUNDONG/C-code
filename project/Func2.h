@@ -15,18 +15,18 @@ void Loadtext1(info *arr, int *tnum, int *osnum)
 
     while(1)
     {
-        fread((arr + *tnum[*osnum]) -> memo, sizeof(arr[tnum[*osnum]].memo), 1, file);     
+        fread((arr + tnum[*osnum]) -> memo, sizeof(arr[tnum[*osnum]].memo), 1, file);     
         if(feof(file) != 0)
         {
             break;
         }
-        (*tnum[*osnum])++;
+        (tnum[*osnum])++;
 
     }
 
 }
 
-void Savetext1(info *arr, int *mnum)
+void Savetext1(info *arr, int *tnum, int *osnum)
 {
 
     int i;
@@ -54,12 +54,12 @@ void savetime(info *arr, int *osnum, int *tnum)
     time(&now);
     t = *localtime(&now);
     
-    arr[*osnum].time[*tnum[*osnum]][0] = t.tm_year+1900;
-    arr[*osnum].time[tnum[*osnum]][1] = t.tm_mon+1;
-    arr[*osnum].time[tnum[*osnum]][2] = t.tm_mday;
-    arr[*osnum].time[tnum[*osnum]][3] = t.tm_hour;
-    arr[*osnum].time[tnum[*osnum]][4] = t.tm_min;
-    arr[*osnum].time[tnum[*osnum]][5] = t.tm_sec;
+    arr[*osnum].stime[tnum[*osnum]][0] = t.tm_year+1900;
+    arr[*osnum].stime[tnum[*osnum]][1] = t.tm_mon+1;
+    arr[*osnum].stime[tnum[*osnum]][2] = t.tm_mday;
+    arr[*osnum].stime[tnum[*osnum]][3] = t.tm_hour;
+    arr[*osnum].stime[tnum[*osnum]][4] = t.tm_min;
+    arr[*osnum].stime[tnum[*osnum]][5] = t.tm_sec;
     
 
 }

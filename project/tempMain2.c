@@ -44,13 +44,14 @@ int main()
         }
 
     }
-
+    
+    Loadtext1(arr, &tnum, &osnum);
     while(menu2 != 'Q')
     {
         printf("-----------------\n");
         printf("\n 1. To Wrtite Note\n 2. To View Note\n 3. Back to menu\n\n");
         printf("-----------------\n");
-
+        
         printf("SELECT : ");
         scanf("%d", &menu2);
 
@@ -65,6 +66,7 @@ int main()
                 break;
             
             case '3' : 
+                Savetext1(arr, &tnum, &osnum);
                 menu = 'Q';
                 break;
 
