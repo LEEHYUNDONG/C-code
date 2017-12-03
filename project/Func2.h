@@ -98,19 +98,16 @@ void to_write_note(info *arr, int *tnum, int *osnum, int *pnum)
         if(flag != 2)
         {
             ch = getchar();
-            if((ch = getchar()) == '\n')
+            if(ch  == '\n')
             {
                 flag++;
-                if((ch = getchar()) == '\n')
-                {
-                    flag++;
-                }
-            
+            } 
             else
                 flag = 0;
             }
             tmp[i] =  ch;
             i++;
+            ch = getchar();
         
         }
         else if(flag == 2)
@@ -128,11 +125,13 @@ void to_write_note(info *arr, int *tnum, int *osnum, int *pnum)
         if(tmp[j] == ' ')
         {
             flag++;
-            if(flag == 2)
-            {
-                strncpy(arr[tnum[*osnum]].title[*osnum], tmp, j);
-            }
         }
+        if(flag == 3)
+        {
+            strncpy(arr[tnum[*osnum]].title[*osnum], tmp, j);
+            break;
+        }
+        
     }
     
     

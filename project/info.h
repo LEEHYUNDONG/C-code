@@ -18,8 +18,8 @@ typedef struct information
 
 }info;
 
-info arr[30];
+info arr[10];
 int npnum = 0;
 int pnum = 0; // Now User Number
 int osnum = 0; // Occupied User
-int tnum[30] = {0,}; // Memo Number fo Each User
+int tnum[10] = {0,}; // Memo Number fo Each User
