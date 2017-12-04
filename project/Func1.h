@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <termios.h>
-#define MAX_P 10
-#define MAX_N 80
 
 void Loaddata1(info *arr, int *pnum) {
     FILE *file = fopen("a.txt","rb");
@@ -58,18 +56,18 @@ int getch() {
     return ch;
 }
 
-void Sign_up(info *arr, int *npnum, int *pnum) {
-    if ((*npnum) < MAX_P) {
+void Sign_up(info *arr, int *osnum, int *pnum) {
+    if ((*pnum) < MAX_P) {
     
     char ch;
     char psw[20];
     int j;
 
     printf("Name : ");
-    fgets(arr[*npnum].name,sizeof(arr[*npnum].name),stdin);
+    fgets(arr[*pnum].name,sizeof(arr[*pnum].name),stdin);
     
     printf("Id : ");
-    fgets(arr[*npnum].id,sizeof(arr[*npnum].id),stdin);
+    fgets(arr[*pnum].id,sizeof(arr[*pnum].id),stdin);
     
     printf("Password : ");
     for(j=0; j<19; j++) {
@@ -80,19 +78,19 @@ void Sign_up(info *arr, int *npnum, int *pnum) {
     }
     printf("\n");
 
-    strncpy(arr[*npnum].psw,psw,strlen(psw));
+    strncpy(arr[*pnum].psw,psw,strlen(psw));
     
     printf("School : ");
-    fgets(arr[*npnum].sch,sizeof(arr[*npnum].sch),stdin);
+    fgets(arr[*pnum].sch,sizeof(arr[*pnum].sch),stdin);
     
     printf("City : ");
-    fgets(arr[*npnum].city,sizeof(arr[*npnum].city),stdin);
+    fgets(arr[*pnum].city,sizeof(arr[*pnum].city),stdin);
     
     printf("Age : ");
-    fgets(arr[*npnum].age,sizeof(arr[*npnum].age),stdin);
+    fgets(arr[*pnum].age,sizeof(arr[*pnum].age),stdin);
     
-    (*npnum)++;
-    (*pnum) = (*npnum) - 1;
+    (*pnum)++;
+    (*osnum) = (*pnum) - 1;
     }
 
     else {

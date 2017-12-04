@@ -104,7 +104,7 @@ void to_write_note(info *arr, int *tnum, int *osnum, int *pnum)
             } 
             else
                 flag = 0;
-            }
+        
             tmp[i] =  ch;
             i++;
             ch = getchar();
@@ -115,18 +115,19 @@ void to_write_note(info *arr, int *tnum, int *osnum, int *pnum)
             break;
         }
     }
-    tmp[i - 1] = '\0';
+
+    tmp[strlen(tmp) - 1] = '\0';
     strncpy(arr[tnum[*osnum]].memo[*osnum], tmp, strlen(tmp) - 1);
     
-    flag = 0;
+    int flag1 = 0;
     
     for(j = 0;j < 19;j++)
     {
         if(tmp[j] == ' ')
         {
-            flag++;
+            flag1++;
         }
-        if(flag == 3)
+        if(flag1 == 3)
         {
             strncpy(arr[tnum[*osnum]].title[*osnum], tmp, j);
             break;
