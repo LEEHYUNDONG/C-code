@@ -161,7 +161,7 @@ void to_view_note(info *arr, int *tnum, int *osnum, int *pnum)
 {   
 
     int i, j;
-
+    
     for(i = 0;i < *pnum;i++)
     {
         if(tnum[i] > 0) {
@@ -171,6 +171,7 @@ void to_view_note(info *arr, int *tnum, int *osnum, int *pnum)
             printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
             printf("Title : %s", arr[i].title[j]);
             printf("\nTime : %4d.%d.%d  %d:%d:%d\n", arr[i].stime[j][0], arr[i].stime[j][1], arr[i].stime[j][2], arr[i].stime[j][3], arr[i].stime[j][4], arr[i].stime[j][5]);
+            printf("User : %s\n", arr[i].id);
             printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
             printf("Memo : %s", arr[i].memo[j]);
         }

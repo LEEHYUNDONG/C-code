@@ -4,9 +4,11 @@
 #include <string.h>
 #include <termios.h>
 
-void Loaddata1(info *arr, int *pnum) {
+void Loaddata1(info *arr, int *pnum) 
+{
     FILE *file = fopen("a.txt","rb");
-    if (file == NULL) {
+    if (file == NULL) 
+    {
         return;
     }
     while(1) 
@@ -35,6 +37,7 @@ void Savedata1(info *arr,int *pnum) {
     {
         return;
     }
+    
     for(i=0;i<(*pnum);i++) 
     {
         fwrite(arr[i].name,sizeof(arr[i].name),1,file);
@@ -66,20 +69,46 @@ int getch() {
     return ch;
 }
 
-void Sign_up(info *arr , int *pnum) {
+void Sign_up(info *arr , int *pnum) 
+{
     if ((*pnum) < MAX_P) {
     
     char ch;
+    char id[20];
     char psw[20];
     int j;
+    int flag = 0;
 
     printf("Name : ");
     fgets(arr[*pnum].name,sizeof(arr[*pnum].name),stdin);
     arr[*pnum].name[strlen(arr[*pnum].name)-1] = '\0';
-
-    printf("Id : ");
-    fgets(arr[*pnum].id,sizeof(arr[*pnum].id),stdin);
-    arr[*pnum].id[strlen(arr[*pnum].id)-1] = '\0';
+    
+    while(flag != 1)
+    {
+        flag = 0;
+        printf("Id : ");
+        fgets(id,sizeof(id),stdin);
+        id[strlen(id) - 1] = '\0';
+        if(*pnum > 1)
+        {
+            for(j = 0;j < *pnum - 1;j++)
+            {
+                if(strncmp(arr[j].id, id, strlen(id)) == 0)
+                {
+                    printf("#Already has same ID\n");
+                    break;
+                }
+                else if(strncmp(arr[j].id, id, strlen(id)) != 0)
+                {
+                    flag++;
+                    strncpy(arr[*pnum].id, id, strlen(id));
+                    break;
+                }
+                
+            }
+        }
+    }
+    
 
 
     printf("Password : ");
@@ -125,11 +154,12 @@ void Sign_in(info *arr, int *pnum,int *osnum) {
     char psw[20];
     char ch;
     int pn;
+    int flag;
 
     printf("----------------\n");
-    while(1)
+    while(flag != 2)
     {
-       
+        flag = 0;
         printf("ID : ");
         fgets(id,sizeof(id),stdin);
         fflush(stdin);
@@ -139,39 +169,35 @@ void Sign_in(info *arr, int *pnum,int *osnum) {
         {
             if(strncmp(arr[i].id,id,strlen(id) - 1) == 0) 
             {
+                pn = i;
                 break;
             }
-    
         }
-        if(strncmp(arr[pn].id, id, strlen(id) - 1) == 0)
+        if(strncmp(arr[i].id,id,strlen(id) - 1) == 0) 
         {
-            pn = i;
-            break;
+            flag++;
         }
-    
-    }
-
-    
-    while(1) 
-    {
+        
         
         printf("PASSWORD : ");
         for(j=0; j<19; j++) 
         {
-        ch = getch();
-        if(ch == '\n') break;
-        putchar('*');
-        psw[j] = ch;
+            ch = getch();
+            if(ch == '\n') break;
+            putchar('*');
+            psw[j] = ch;
         }
         printf("\n");
 
         if(strncmp(arr[pn].psw, psw, strlen(psw)-1) == 0) 
         {
             (*osnum) = pn;
+            flag++;
             printf("---------------\n"); break;
         }
         else 
         {
+            system("clear");
             printf("Acess Denied\n");
             
         }

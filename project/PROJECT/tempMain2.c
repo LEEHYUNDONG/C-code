@@ -33,13 +33,15 @@ int main()
                 break;
             case '2' : 
                 Signin(); 
+                system("clear");
                 while(menu2 != 'Q')
                 {
                     printf("-----------------\n");
-                    printf("\n 1. To Wrtite Note\n 2. To View Note\n 3. Back to menu\n\n");
+                    printf("\n 1. To Write Note\n 2. To View Note\n 3. Back to menu\n\n");
                     printf("-----------------\n");
                     printf("SELECT : ");
                     menu2 = getch();
+                    system("clear");
                     switch(menu2)
                     {
                         case '1' : 
@@ -62,6 +64,7 @@ int main()
                         break;
                     }
                 }
+                system("clear");
                 break;
             case '3' : 
                 Listofuser(); 
