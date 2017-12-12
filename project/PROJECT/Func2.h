@@ -33,7 +33,8 @@ void Loadtext1(info *arr, int *pnum, int *tnum)
     fclose(file);
 }
 
-void Savetext (int *tnum) {
+void Savetext (int *tnum) 
+{
     int i;
     FILE *file = fopen("d.txt","wb");
     if(file == NULL) {
@@ -41,6 +42,7 @@ void Savetext (int *tnum) {
     }
     fwrite(tnum,sizeof(tnum),10,file);
     fclose(file);
+
 }
 
 void Savetext1(info *arr, int *pnum, int *tnum)
@@ -79,7 +81,6 @@ void savetime(info *arr, int *osnum, int *tnum)
     arr[*osnum].stime[tnum[*osnum]][4] = t.tm_min;
     arr[*osnum].stime[tnum[*osnum]][5] = t.tm_sec;
     
-
 }
 
 void presenttime()

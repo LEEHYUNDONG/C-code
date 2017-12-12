@@ -16,6 +16,7 @@ int main()
     Loadtext1(arr, &pnum ,tnum);
     char menu;
     char menu2;
+    char ch[2];
 
     while(menu != 'Q')
     {
@@ -25,7 +26,7 @@ int main()
         printf("---------------------\n\n");
         printf("SELECT : ");
         menu = getch();
-
+        fflush(stdin);
         switch(menu)
         {
             case '1' : 
@@ -41,6 +42,7 @@ int main()
                     printf("-----------------\n");
                     printf("SELECT : ");
                     menu2 = getch();
+                    fflush(stdin);
                     system("clear");
                     switch(menu2)
                     {
@@ -64,7 +66,6 @@ int main()
                         break;
                     }
                 }
-                system("clear");
                 break;
             case '3' : 
                 Listofuser(); 

@@ -2,7 +2,7 @@
 #define _FUNC1_H_
 #include <stdio.h>
 #include <string.h>
-#include <termios.h>
+#include <unistd.h>
 
 void Loaddata1(info *arr, int *pnum) 
 {
@@ -29,7 +29,8 @@ void Loaddata1(info *arr, int *pnum)
     }
 }
 
-void Savedata1(info *arr,int *pnum) {
+void Savedata1(info *arr,int *pnum) 
+{
     int i;
     FILE *file = fopen("a.txt","wb");
     
@@ -49,33 +50,25 @@ void Savedata1(info *arr,int *pnum) {
     }
     fclose(file);
 }
-
-int getch() {
+char getch(void)
+{
+    char ch;
+    char str[10];
     
-    int ch;
-    struct termios buf;
-    struct termios save;
+    fgets(str, 3, stdin);
+    str[strlen(str) - 1] = '\0';
+    fflush(stdin);
+    ch = str[0];
 
-    tcgetattr(0, &save);
-    buf = save;
-
-    buf.c_lflag &= ~(ICANON|ECHO);
-    buf.c_cc[VMIN] = 1;
-    buf.c_cc[VTIME] = 0;
-
-    tcsetattr(0, TCSAFLUSH, &buf);
-    ch = getchar();
-    tcsetattr(0, TCSAFLUSH, &save);
     return ch;
 }
-
 void Sign_up(info *arr , int *pnum) 
 {
     if ((*pnum) < MAX_P) {
     
     char ch;
     char id[20];
-    char psw[20];
+    char *psw;
     int j;
     int flag = 0;
 
@@ -111,16 +104,7 @@ void Sign_up(info *arr , int *pnum)
     
 
 
-    printf("Password : ");
-    
-    for(j=0; j<19; j++) 
-    {
-        ch = getch();
-        if(ch == '\n') break;
-        putchar('*');
-        psw[j] = ch;
-    }
-    printf("\n");
+    psw = getpass("Password : ");
 
     strncpy(arr[*pnum].psw,psw,strlen(psw));
     
@@ -147,11 +131,12 @@ void Sign_up(info *arr , int *pnum)
     }
 }
 
-void Sign_in(info *arr, int *pnum,int *osnum) {
+void Sign_in(info *arr, int *pnum,int *osnum) 
+{
     
     int i,j;
     char id[20];
-    char psw[20];
+    char *psw;
     char ch;
     int pn;
     int flag;
@@ -179,15 +164,7 @@ void Sign_in(info *arr, int *pnum,int *osnum) {
         }
         
         
-        printf("PASSWORD : ");
-        for(j=0; j<19; j++) 
-        {
-            ch = getch();
-            if(ch == '\n') break;
-            putchar('*');
-            psw[j] = ch;
-        }
-        printf("\n");
+        psw = getpass("PASSWORD : ");
 
         if(strncmp(arr[pn].psw, psw, strlen(psw)-1) == 0) 
         {
@@ -204,7 +181,8 @@ void Sign_in(info *arr, int *pnum,int *osnum) {
     }
 }
 
-void List_of_user(info *arr, int *pnum) {
+void List_of_user(info *arr, int *pnum) 
+{
     
     int i;
     
