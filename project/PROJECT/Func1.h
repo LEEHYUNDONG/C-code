@@ -70,37 +70,42 @@ void Sign_up(info *arr , int *pnum)
     char id[20];
     char *psw;
     int j;
+    int t;
     int flag = 0;
 
     printf("Name : ");
     fgets(arr[*pnum].name,sizeof(arr[*pnum].name),stdin);
     arr[*pnum].name[strlen(arr[*pnum].name)-1] = '\0';
     
-    while(flag != 1)
+    if((*pnum) > 0)
     {
-        flag = 0;
-        printf("Id : ");
-        fgets(id,sizeof(id),stdin);
-        id[strlen(id) - 1] = '\0';
-        if(*pnum > 1)
+        while(1)
         {
-            for(j = 0;j < *pnum - 1;j++)
+            t = 0;
+            printf("Id : ");
+            fgets(arr[*pnum].id,sizeof(arr[*pnum].id),stdin);
+            arr[*pnum].id[strlen(arr[*pnum].id) - 1] = '\0';
+            for(j = 0;j < *pnum;j++)
             {
-                if(strncmp(arr[j].id, id, strlen(id)) == 0)
+                if(strncmp(arr[j].id, arr[*pnum].id, strlen(arr[*pnum].id)) != 0)
                 {
-                    printf("#Already has same ID\n");
-                    break;
+                    t++;
                 }
-                else if(strncmp(arr[j].id, id, strlen(id)) != 0)
-                {
-                    flag++;
-                    strncpy(arr[*pnum].id, id, strlen(id));
-                    break;
-                }
-                
             }
+            if(t ==(*pnum))
+                break;
+            else
+                printf("#The ID is already exist\n");
+
         }
     }
+    else if((*pnum) == 0)
+    {
+        printf("Id : ");
+        fgets(arr[*pnum].id,sizeof(arr[*pnum].id),stdin);
+        arr[*pnum].id[strlen(arr[*pnum].id) - 1] = '\0';
+    }
+
     
 
 
