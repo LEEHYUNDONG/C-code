@@ -157,17 +157,14 @@ void Sign_in(info *arr, int *pnum,int *osnum)
 
         for(i = 0; i < (*pnum); i++) 
         {
-            if(strncmp(arr[i].id,id,strlen(id) - 1) == 0) 
+            if(strncmp(arr[i].id,id,strlen(id)) == 0) 
             {
                 pn = i;
+                flag++;
                 break;
             }
+            
         }
-        if(strncmp(arr[i].id,id,strlen(id) - 1) == 0) 
-        {
-            flag++;
-        }
-        
         
         psw = getpass("PASSWORD : ");
 
@@ -175,7 +172,7 @@ void Sign_in(info *arr, int *pnum,int *osnum)
         {
             (*osnum) = pn;
             flag++;
-            printf("---------------\n"); break;
+            printf("---------------\n"); 
         }
         else 
         {

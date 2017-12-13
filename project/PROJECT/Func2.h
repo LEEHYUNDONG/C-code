@@ -152,6 +152,7 @@ void to_write_note(info *arr, int *n_num, int *osnum, int *pnum)
             if(flag == 3)
             {
                 strncpy(arr[*osnum].title[tnum[*osnum]], tmp, j);
+                break;
             }
         
     }
@@ -167,7 +168,7 @@ void to_view_note(info *arr, int *tnum, int *osnum, int *pnum)
     {
         if(tnum[i] > 0) {
         printf("------------------------------------\n");
-        for(j = 0;j < tnum[*osnum];j++)
+        for(j = 0;j < tnum[i];j++)
         {
             printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
             printf("Title : %s", arr[i].title[j]);
