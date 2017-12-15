@@ -8,7 +8,6 @@
 #include "ArrFunc2.h"
 
 
-
 int main()
 {
     Loaddata1(arr, &pnum);
@@ -16,7 +15,6 @@ int main()
     Loadtext1(arr, &pnum ,tnum);
     char menu;
     char menu2;
-    char ch[2];
 
     while(menu != 'Q')
     {

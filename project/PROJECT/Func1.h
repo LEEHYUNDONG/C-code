@@ -64,9 +64,9 @@ char getch(void)
 }
 void Sign_up(info *arr , int *pnum) 
 {
-    if ((*pnum) < MAX_P) {
+    if ((*pnum) < MAX_P) 
+    {
     
-    char ch;
     char id[20];
     char *psw;
     int j;
@@ -142,7 +142,6 @@ void Sign_in(info *arr, int *pnum,int *osnum)
     int i,j;
     char id[20];
     char *psw;
-    char ch;
     int pn;
     int flag;
 
@@ -176,9 +175,8 @@ void Sign_in(info *arr, int *pnum,int *osnum)
         }
         else 
         {
-            system("clear");
             printf("Acess Denied\n");
-            
+            system("clear"); 
         }
     }
 }

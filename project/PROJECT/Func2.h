@@ -2,10 +2,10 @@
 #define _FUNC2_H_
 #include<stdio.h>
 #include<string.h>
-#include<termios.h>
 #include<time.h>
 
-void Loadtext (int *tnum) {
+void Loadtext (int *tnum) 
+{
     int i;
     FILE *file = fopen("d.txt","rb");
     if(file == NULL) {
