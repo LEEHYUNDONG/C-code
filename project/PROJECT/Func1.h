@@ -4,7 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
-void Loaddata1(info *arr, int *pnum) 
+void Loaddata1(info *arr, int *pnum)//Load the data from a.txt for use 
 {
     FILE *file = fopen("a.txt","rb");
     if (file == NULL) 
@@ -29,7 +29,7 @@ void Loaddata1(info *arr, int *pnum)
     }
 }
 
-void Savedata1(info *arr,int *pnum) 
+void Savedata1(info *arr,int *pnum) //Save the user information in binary in a raw
 {
     int i;
     FILE *file = fopen("a.txt","wb");
@@ -50,7 +50,7 @@ void Savedata1(info *arr,int *pnum)
     }
     fclose(file);
 }
-char getch(void)
+char getch(void)//get the character.
 {
     char ch;
     char str[10];
@@ -64,7 +64,7 @@ char getch(void)
 }
 void Sign_up(info *arr , int *pnum) 
 {
-    if ((*pnum) < MAX_P) 
+    if ((*pnum) < MAX_P) //when the user number is under 10.
     {
     
     char id[20];
@@ -92,7 +92,7 @@ void Sign_up(info *arr , int *pnum)
                     t++;
                 }
             }
-            if(t ==(*pnum))
+            if(t ==(*pnum))//when the id is not overlapped quit the loop
                 break;
             else
                 printf("#The ID is already exist\n");
@@ -181,7 +181,7 @@ void Sign_in(info *arr, int *pnum,int *osnum)
     }
 }
 
-void List_of_user(info *arr, int *pnum) 
+void List_of_user(info *arr, int *pnum) //to show list of present users
 {
     
     int i;

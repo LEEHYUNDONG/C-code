@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include "info.h"
 #include "Func1.h"
@@ -12,10 +11,10 @@ int main()
 {
     Loaddata1(arr, &pnum);
     Loadtext(tnum);
-    Loadtext1(arr, &pnum ,tnum);
+    Loadtext1(arr, &pnum);
     char menu;
     char menu2;
-
+    
     while(menu != 'Q')
     {
         menu2 = 'a';
@@ -71,7 +70,7 @@ int main()
             case '4' : 
                 Savedata1(arr, &pnum); 
                 Savetext(tnum);
-                Savetext1(arr, &pnum ,tnum);
+                Savetext1(arr, &pnum);
                 printf("\n"); 
                 menu = 'Q';
                 break;
