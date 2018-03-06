@@ -1,0 +1,62 @@
+#include <stdio.h>
+#define ADD(x, y) = ((x) + (y))
+#define SUB(x, y) = ((x) - (y))
+#define MUL(x, y) = ((x) * (y))
+
+typedef struct
+{
+  int real, img;  
+  
+}num;
+
+struct num input(struct num, char ch, int *pn[4]); //function pointer to the res function!!
+
+int main(void)
+{
+  int n[4];
+  char ch;
+     
+  printf("Input calculation of complex number(sum, sub, mul)\(equation ex)(a + bi)+(c - di) \n >");
+  scanf("%d%d", &n[0], &n[1]);
+  scanf("%c", &ch);
+  scanf("%d%d", &n[2], &n[3]);
+  num = input(num, ch, n);
+      
+  printf("\nResult : %d + (%di)\n", num.real, num.img);
+  
+  system("pause");	
+  return 0;
+
+}
+
+struct num input(struct num, char ch, int *pn[4])
+{
+    int x, y, z;
+    
+    if(ch == '+')
+    {
+        x = SUM(pn[0], pn[2]);
+        y = SUM(pn[1], pn[3]);
+           
+    }
+    else if(ch == '-')
+    {
+        x = SUB(pn[0], pn[2]);
+        y = SUB(pn[1], pn[3]);
+  
+    }
+    else if(ch == '*')
+    {
+        x = MUL(pn[0], pn[2]);
+        y = MUL(pn[1], pn[3]);
+        z = -y;
+        y = pn[0]*pn[3] + pn[2]*pn[1];
+        x = x + z;
+    
+    }
+    num.real = x;
+    num.img = y;
+    
+    return num;
+            
+}
