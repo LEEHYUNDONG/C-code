@@ -20,15 +20,14 @@ int main(void)
   char ch;
      
   printf(" Input calculation of complex number(sum, sub, mul)\n (equation ex)(a + bi)<>(c - di) \n >");
-  scanf("a : %d b :%d",&n[0], &n[1]);
-  scanf("\n<> :%c", &ch);
-  scanf("\nc : %d d : %d"&n[2], &n[3]);
-  
+  printf("a : "); scanf("%d", &n[0]);
+  printf("b : "); scanf("%d", &n[1]);
+  printf("c : "); scanf("%d", &n[2]);
+  printf("d, <> : "); scanf("%d%c", &n[3], &ch);
   input(ch, n);
       
   printf("\nResult : %d + %di\n", com.real, com.img);
   
-  system("pause");
   return 0;
 
 }
@@ -62,7 +61,7 @@ complex input(char ch, int *pn)
     com.real = x;
     com.img = y;
     
-    return complex;
+    return com;
             
 }
 
